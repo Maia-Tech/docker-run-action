@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
       - name: Run docker action and set output for testing
         uses: ./
         id: run-docker
@@ -30,6 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
       - name: Create File to be mounted
         run: echo "some text" > someFile
       - name: Run docker action with mounted workspace
@@ -62,6 +66,8 @@ jobs:
         options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
     steps:
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
       - name: Run docker action and test network connection
         uses: ./
         with:
